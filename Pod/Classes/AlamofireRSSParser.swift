@@ -185,6 +185,22 @@ open class AlamofireRSSParser: NSObject, XMLParserDelegate {
                     currentItem.pubDate = date
                 }
             }
+
+            if (elementName == "dc:date") {
+                if let date = RSSDateFormatter.publishedDateFormatter().date(from: self.currentString) {
+                    currentItem.pubDate = date
+                } else if let date = RSSDateFormatter.publishedDateFormatter2().date(from: self.currentString) {
+                    currentItem.pubDate = date
+                }
+            }
+            
+            if (elementName == "updated") {
+                if let date = RSSDateFormatter.publishedDateFormatter().date(from: self.currentString) {
+                    currentItem.pubDate = date
+                } else if let date = RSSDateFormatter.publishedDateFormatter2().date(from: self.currentString) {
+                    currentItem.pubDate = date
+                }
+            }
             
             if (elementName == "media:thumbnail") {
                 if let attributes = self.currentAttributes {
